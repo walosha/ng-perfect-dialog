@@ -1,24 +1,79 @@
-# Lib
+# ng-perfect dialog (ZERO DEPENDENCIES) 24 kB
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
+All types of dialogs in one package for Angular
 
-## Code scaffolding
+- [Simple Alert Dialog](#simple-alert-dialog)
 
-Run `ng generate component component-name --project lib` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project lib`.
-> Note: Don't forget to add `--project lib` or else it will be added to the default project in your `angular.json` file. 
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://github.com/walosha/ng-perfect-dialog) [![Support](https://img.shields.io/badge/Support-Angular%202%2B-blue.svg?style=flat-square)]() [![Support](https://img.shields.io/badge/Support-Angular%204%2B-blue.svg?style=flat-square)]() [![Support](https://img.shields.io/badge/Support-Angular%205%2B-blue.svg?style=flat-square)]() [![Support](https://img.shields.io/badge/Support-Angular%206%2B-blue.svg?style=flat-square)]() [![Support](https://img.shields.io/badge/Support-Angular%207%2B-blue.svg?style=flat-square)]()
 
-## Build
+> Please support this project by simply putting a Github star. Share this library with friends on Twitter and everywhere else you can.
 
-Run `ng build lib` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Table of Contents
 
-## Publishing
+- Getting started
+- [Installation](#installation)
+- [Implementation](#implementation)
+- [Demo](#demo)
+- [Creator](#creator)
+- [License](#license)
 
-After building your library with `ng build lib`, go to the dist folder `cd dist/lib` and run `npm publish`.
+## Getting Started
 
-## Running unit tests
+```bash
+npm i ng-perfect-dialog
+```
 
-Run `ng test lib` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Implementation
 
-## Further help
+Import **NgxDialogsModule** in your application module. For example: **app.module.ts**
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```typescript
+import { SuperDialogModule } from "ng-perfect-dialog";
+
+@NgModule({
+  imports: [
+    SuperDialogModule,
+    // ...
+  ],
+})
+export class AppModule {}
+```
+
+```typescript
+import { SuperDialogService } from "ng-perfect-dialog";
+
+export class MyOwnComponent implements OnInit {
+  constructor(private superDialogService: SuperDialogService) {}
+  notifyDataLoss() {
+    this.superDialogService.open({
+      component: CustomActionModalComponent,
+      modalConfigurations: {
+        disableClose: false,
+        width: "35.6rem",
+      },
+      data: {
+        name: "Olawale Afuye",
+        // any data type
+      },
+    });
+  }
+
+  cancel() {
+    this.superDialogService.$close.next(true);
+  }
+}
+```
+
+```typescript
+export class CustomActionModalComponent implements OnInit {
+  name: string = "";
+}
+```
+
+## Creator
+
+- Olawale Afuye
+
+## License
+
+![Support](https://img.shields.io/badge/Support-ES6-blue.svg?style=flat-square) [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)]()

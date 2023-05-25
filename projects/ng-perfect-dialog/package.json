@@ -1,6 +1,15 @@
 {
   "name": "ng-perfect-dialog",
-  "version": "0.0.3",
+  "repository": "https://github.com/walosha/ng-perfect-dialog",
+  "homepage": "https://github.com/walosha/ng-perfect-dialog",
+  "main": "",
+  "keywords": [
+    "dialog",
+    "simple",
+    "angular",
+    "modal"
+  ],
+  "version": "0.0.6",
   "peerDependencies": {
     "@angular/animations": "^14.3.0",
     "@angular/common": "^14.3.0"
