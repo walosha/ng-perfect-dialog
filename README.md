@@ -1,27 +1,68 @@
-# NgSuperDialog
+# ng-perfect dialog (ZERO DEPENDENCIES)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.2.
+All types of dialogs in one package for Angular
 
-## Development server
+- [Simple Alert Dialog](#simple-alert-dialog)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://github.com/walosha/ng-perfect-dialog) [![Support](https://img.shields.io/badge/Support-Angular%202%2B-blue.svg?style=flat-square)]() [![Support](https://img.shields.io/badge/Support-Angular%204%2B-blue.svg?style=flat-square)]() [![Support](https://img.shields.io/badge/Support-Angular%205%2B-blue.svg?style=flat-square)]() [![Support](https://img.shields.io/badge/Support-Angular%206%2B-blue.svg?style=flat-square)]() [![Support](https://img.shields.io/badge/Support-Angular%207%2B-blue.svg?style=flat-square)]() ![Support](https://img.shields.io/badge/Support-ES6-blue.svg?style=flat-square) [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)]()
 
-## Code scaffolding
+> Please support this project by simply putting a Github star. Share this library with friends on Twitter and everywhere else you can.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Table of Contents
 
-## Build
+- Getting started
+- [Installation](#installation)
+- [Implementation](#implementation)
+- [Settings Option](#settings-option)
+- [Demo](#demo)
+- [Creator](#creator)
+- [License](#license)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Getting Started
 
-## Running unit tests
+### Implementation
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Import **NgxDialogsModule** in your application module. For example: **app.module.ts**
 
-## Running end-to-end tests
+```typescript
+import { SuperDialogModule } from "ng-perfect-dialog";
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+@NgModule({
+  imports: [
+    SuperDialogModule,
+    // ...
+  ],
+})
+export class AppModule {}
+```
 
-## Further help
+```typescript
+import { Ngxalert } from "ngx-dialogs";
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+export class MyOwnComponent implements OnInit {
+  constructor(private superDialogService: SuperDialogService) {}
+  notifyDataLoss() {
+    this.superDialogService.open({
+      component: CustomActionModalComponent,
+      modalConfigurations: {
+        disableClose: false,
+        width: "35.6rem",
+      },
+      data: {
+        name: "Olawale Afuye",
+        // any data type
+      },
+    });
+  }
+
+  cancel() {
+    this.superDialogService.$close.next(true);
+  }
+}
+```
+
+```typescript
+export class CustomActionModalComponent implements OnInit {
+  name: string = "";
+}
+```

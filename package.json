@@ -1,6 +1,9 @@
 {
   "name": "ng-perfect-dialog",
   "version": "0.0.0",
+  "repository": "https://github.com/walosha/ng-perfect-dialog",
+  "homepage": "https://github.com/walosha/ng-perfect-dialog",
+  "main": "",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
