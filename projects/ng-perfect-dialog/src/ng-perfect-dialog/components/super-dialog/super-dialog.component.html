@@ -1,0 +1,82 @@
+<div class="main" [ngStyle]="{ display: activeModal ? 'block' : 'none' }">
+  <div
+    class="relative"
+    [ngClass]="
+      isAbsolute ? '' : 'd-flex justify-content-center align-items-center'
+    "
+  >
+    <div
+      class="content-box"
+      [ngClass]="isAbsolute ? 'position-absolute' : ''"
+      [ngStyle]="{
+        left: left,
+        top: top,
+        right: right,
+        bottom: bottom,
+        'max-height': maxHeight,
+        'max-width': maxWidth,
+        'min-height': minHeight,
+        'min-width': minWidth,
+        margin: innerMargin,
+        height: height,
+        width: width,
+        'animation-name': 'zoomIn',
+        'animation-duration': animationDuration,
+        'animation-interval': 'infinite'
+      }"
+    >
+      <div *ngIf="showCloseButton" class="">
+        <div
+          class="d-flex close-icon-box pb-3 justify-content-end position-relative"
+        >
+          <div class="cursor-pointer" (click)="triggerClose()">
+            <svg
+              class="close-icon"
+              width="22"
+              height="22"
+              viewBox="0 0 22 22"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="11" cy="11" r="11" fill="white" />
+              <path
+                d="M17 6.20857L15.7914 5L11 9.79143L6.20857 5L5 6.20857L9.79143 11L5 15.7914L6.20857 17L11 12.2086L15.7914 17L17 15.7914L12.2086 11L17 6.20857Z"
+                fill="#686B6F"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div
+        class="inner-content-box"
+        [ngStyle]="{
+          'max-height': maxHeight,
+          'max-width': maxWidth,
+          'min-height': minHeight,
+          'min-width': minWidth,
+          height: height,
+          width: width,
+          overflow: overFlow,
+          'overflow-x': overFlowX,
+          'overflow-y': overFlowY
+        }"
+      >
+        <div
+          class="content"
+          #modalPalace
+          [ngStyle]="{
+            margin: outerMargin
+          }"
+        ></div>
+      </div>
+    </div>
+    <div
+      class="overlay"
+      (click)="triggerClose()"
+      *ngIf="!disableClose; else noClose"
+    ></div>
+    <ng-template #noClose>
+      <div class="overlay"></div>
+    </ng-template>
+  </div>
+</div>
