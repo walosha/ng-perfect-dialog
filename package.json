@@ -4,6 +4,12 @@
   "repository": "https://github.com/walosha/ng-perfect-dialog",
   "homepage": "https://github.com/walosha/ng-perfect-dialog",
   "main": "",
+  "keywords": [
+    "dialog",
+    "simple",
+    "angular",
+    "modal"
+  ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
