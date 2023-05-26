@@ -13,11 +13,12 @@ All types of dialogs in one package for Angular
 - Getting started
 - [Installation](#installation)
 - [Implementation](#implementation)
-- [Demo](#demo)
 - [Creator](#creator)
 - [License](#license)
 
 ## Getting Started
+
+## Installation
 
 ```bash
 npm i ng-perfect-dialog
@@ -68,6 +69,12 @@ export class MyOwnComponent implements OnInit {
 export class CustomActionModalComponent implements OnInit {
   name: string = "";
 }
+```
+
+- // .component.html
+
+```html
+<super-dialog></super-dialog>
 ```
 
 ## Creator
