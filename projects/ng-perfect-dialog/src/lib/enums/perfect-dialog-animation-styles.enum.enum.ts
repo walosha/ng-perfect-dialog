@@ -1,4 +1,4 @@
-export enum SuperDialogAnimationStylesEnum {
+export enum PerfectDialogAnimationStylesEnum {
   slideInFromRight = 'slideInFromRight',
   slideInFromLeft = 'slideInFromLeft',
   slideInFromTop = 'slideInFromTop',

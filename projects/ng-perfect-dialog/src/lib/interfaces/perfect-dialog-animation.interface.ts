@@ -1,4 +1,4 @@
-export interface SuperDialogAnimationInterface {
+export interface PerfectDialogAnimationInterface {
   entryAnimationName?: string;
   animationDuration?: string;
   exitAnimationName?: string;

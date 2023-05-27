@@ -6,21 +6,21 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
-import { SuperDialogService } from '../../services/super-dialog.service';
-import { SuperDialogStyleInterface } from '../../interfaces/super-dialog-style.interface';
-import { SuperDialogAnimationInterface } from '../../interfaces/super-dialog-animation.interface';
-import { SuperDialogAnimationStylesEnum } from '../../enums/super-dialog-animation-styles.enum.enum';
+import { PerfectDialogAnimationStylesEnum } from '../../enums/perfect-dialog-animation-styles.enum.enum';
 import { NavigationEnd, Router } from '@angular/router';
+import { PerfectDialogAnimationInterface } from '../../interfaces/perfect-dialog-animation.interface';
+import { PerfectDialogStyleInterface } from '../../interfaces/perfect-dialog-style.interface';
+import { PerfectDialogService } from '../../services/perfect-dialog.service';
 @Component({
-  selector: 'super-dialog',
-  templateUrl: './super-dialog.component.html',
-  styleUrls: ['./super-dialog.component.scss'],
+  selector: 'perfect-dialog',
+  templateUrl: './perfect-dialog.component.html',
+  styleUrls: ['./perfect-dialog.component.scss'],
 })
-export class SuperDialogComponent
+export class PerfectDialogComponent
   implements
     AfterViewInit,
-    SuperDialogAnimationInterface,
-    SuperDialogStyleInterface
+    PerfectDialogAnimationInterface,
+    PerfectDialogStyleInterface
 {
   left: any;
   top: any;
@@ -51,7 +51,7 @@ export class SuperDialogComponent
   modalPalace!: ViewContainerRef;
 
   constructor(
-    private superDialogService: SuperDialogService,
+    private PerfectDialogService: PerfectDialogService,
     private renderer2: Renderer2,
     private componentFactoryResolver: ComponentFactoryResolver,
     private router: Router
@@ -63,7 +63,7 @@ export class SuperDialogComponent
         this.closeModal();
       }
     });
-    this.superDialogService.$open.subscribe((response) => {
+    this.PerfectDialogService.$open.subscribe((response) => {
       this.syncUserDefinedStyleSheet(response.modalConfigurations);
       this.syncUserDefinedAnimations(response.animations);
       const componentFactory_ =
@@ -82,26 +82,27 @@ export class SuperDialogComponent
         }
       }
       if (this.componentReference) {
-        this.superDialogService.$afterOpened.next(true);
+        this.PerfectDialogService.$afterOpened.next(true);
       } else {
-        this.superDialogService.$afterOpened.next(true);
+        this.PerfectDialogService.$afterOpened.next(true);
       }
     });
-    this.superDialogService.$displayModalInDom.subscribe((res) => {
+    this.PerfectDialogService.$displayModalInDom.subscribe((res) => {
       this.activeModal = res;
+      console.log({ displayModalInDom: this.activeModal });
     });
-    this.superDialogService.$close.subscribe((response) => {
+    this.PerfectDialogService.$close.subscribe((response) => {
       if (response === true) {
         this.closeModal();
       }
     });
-    this.superDialogService.$close.subscribe((response) => {
+    this.PerfectDialogService.$close.subscribe((response) => {
       if (response === true) {
         this.closeModal();
       }
     });
   }
-  syncUserDefinedStyleSheet(configurations: SuperDialogStyleInterface | any) {
+  syncUserDefinedStyleSheet(configurations: PerfectDialogStyleInterface | any) {
     if (!configurations) return;
     this.top = configurations.top ? configurations.top : 0;
     this.left = configurations.left ? configurations.left : 0;
@@ -142,16 +143,16 @@ export class SuperDialogComponent
       ? configurations.closeOnNavigation
       : true;
   }
-  syncUserDefinedAnimations(animation: SuperDialogAnimationInterface | any) {
+  syncUserDefinedAnimations(animation: PerfectDialogAnimationInterface | any) {
     this.entryAnimationName = animation.entryAnimationName
       ? animation.entryAnimationName
-      : SuperDialogAnimationStylesEnum.zoomIn;
+      : PerfectDialogAnimationStylesEnum.zoomIn;
     this.animationDuration = animation.animationDuration
       ? animation.animationDuration
       : '1s';
     this.exitAnimationName = animation.exitAnimationName
       ? animation.exitAnimationName
-      : SuperDialogAnimationStylesEnum.zoomOut;
+      : PerfectDialogAnimationStylesEnum.zoomOut;
     this.dismissInXSeconds = animation.dismissInXSeconds
       ? animation.dismissInXSeconds
       : null;
@@ -170,7 +171,7 @@ export class SuperDialogComponent
   closeModal() {
     if (this.timer) clearTimeout(this.timer);
     this.modalPalace.clear();
-    this.superDialogService.$afterClosed.next(true);
-    this.superDialogService.$displayModalInDom.next(false);
+    this.PerfectDialogService.$afterClosed.next(true);
+    this.PerfectDialogService.$displayModalInDom.next(false);
   }
 }

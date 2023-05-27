@@ -29,11 +29,11 @@ npm i ng-perfect-dialog
 Import **NgxDialogsModule** in your application module. For example: **app.module.ts**
 
 ```typescript
-import { SuperDialogModule } from "ng-perfect-dialog";
+import { PerfectDialogModule } from "ng-perfect-dialog";
 
 @NgModule({
   imports: [
-    SuperDialogModule,
+    PerfectDialogModule,
     // ...
   ],
 })
@@ -41,26 +41,26 @@ export class AppModule {}
 ```
 
 ```typescript
-import { SuperDialogService } from "ng-perfect-dialog";
+import { PerfectDialogService } from "ng-perfect-dialog";
 
-export class MyOwnComponent implements OnInit {
-  constructor(private superDialogService: SuperDialogService) {}
-  notifyDataLoss() {
-    this.superDialogService.open({
-      component: CustomActionModalComponent,
+export class HomeComponent {
+  constructor(private perfectDialogService: PerfectDialogService) {}
+
+  open() {
+    this.perfectDialogService.open({
+      component: InfoComponent,
       modalConfigurations: {
         disableClose: false,
-        width: "35.6rem",
+        width: "48rem",
       },
       data: {
-        name: "Olawale Afuye",
-        // any data type
+        name: "OLawale",
       },
     });
   }
 
   cancel() {
-    this.superDialogService.$close.next(true);
+    this.perfectDialogService.$close.next(true);
   }
 }
 ```
@@ -74,7 +74,7 @@ export class CustomActionModalComponent implements OnInit {
 - // .component.html
 
 ```html
-<super-dialog></super-dialog>
+<perfect-dialog></perfect-dialog>
 ```
 
 ## Creator

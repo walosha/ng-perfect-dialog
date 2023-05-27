@@ -1,4 +1,4 @@
-export interface SuperDialogStyleInterface {
+export interface PerfectDialogStyleInterface {
   innerMargin?: string;
   outerMargin?: string;
   left?: string;

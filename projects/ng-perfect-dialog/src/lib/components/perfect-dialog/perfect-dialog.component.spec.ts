@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SuperDialogComponent } from './super-dialog.component';
+import { SuperDialogComponent } from './perfect-dialog.component';
 
 describe('SuperDialogComponent', () => {
   let component: SuperDialogComponent;
