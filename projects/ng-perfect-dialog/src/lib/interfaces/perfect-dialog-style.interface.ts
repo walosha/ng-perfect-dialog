@@ -17,4 +17,5 @@ export interface PerfectDialogStyleInterface {
   disableClose?: boolean;
   showCloseButton?: boolean;
   closeOnNavigation?: boolean;
+  borderRadius?: string;
 }

@@ -30,6 +30,7 @@ export class PerfectDialogComponent
   maxWidth: any;
   minWidth: any;
   width: any;
+  borderRadius: any;
   height: any;
   minHeight: any;
   overFlowX: any;
@@ -105,6 +106,9 @@ export class PerfectDialogComponent
   syncUserDefinedStyleSheet(configurations: PerfectDialogStyleInterface | any) {
     if (!configurations) return;
     this.top = configurations.top ? configurations.top : 0;
+    this.borderRadius = configurations.borderRadius
+      ? configurations.borderRadius
+      : 0;
     this.left = configurations.left ? configurations.left : 0;
     this.right = configurations.right ? configurations.right : 0;
     this.bottom = configurations.bottom ? configurations.bottom : 0;
